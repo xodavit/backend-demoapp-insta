@@ -1,5 +1,6 @@
 package io.xodavit.instagrom.entity;
 
+import javax.persistence.PrePersist;
 import java.time.LocalDateTime;
 
 public class Comment {
@@ -10,6 +11,7 @@ public class Comment {
     private String message;
     private LocalDateTime createdDate;
 
+    @PrePersist
     protected void onCreate() {
         this.createdDate = LocalDateTime.now();
     }

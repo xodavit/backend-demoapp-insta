@@ -1,7 +1,5 @@
 package io.xodavit.instagrom.entity;
 
-import io.xodavit.instagrom.entity.enums.ERole;
-
 import javax.persistence.PrePersist;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -21,6 +19,7 @@ public class Post {
     private List<Comment> comments = new ArrayList<>();
     private LocalDateTime createdDate;
 
+    @PrePersist
     protected void onCreate() {
         this.createdDate = LocalDateTime.now();
     }

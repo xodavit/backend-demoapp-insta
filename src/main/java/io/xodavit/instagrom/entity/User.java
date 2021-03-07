@@ -36,7 +36,7 @@ public class User {
     @JsonFormat(pattern = "yyyy-mm-dd HH:mm:ss")
     @Column(updatable = false)
     private LocalDateTime createdDate;
-
+    @Transient
     private Collection<? extends GrantedAuthority> authorities;
 
     public User() {

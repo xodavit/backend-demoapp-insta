@@ -3,13 +3,11 @@ package io.xodavit.instagrom.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.xodavit.instagrom.entity.enums.ERole;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @Entity
@@ -38,6 +36,11 @@ public class User {
     @JsonFormat(pattern = "yyyy-mm-dd HH:mm:ss")
     @Column(updatable = false)
     private LocalDateTime createdDate;
+
+    private Collection<? extends GrantedAuthority> authorities;
+
+    public User() {
+    }
 
     @PrePersist
     protected void onCreate() {

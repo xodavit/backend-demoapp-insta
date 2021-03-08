@@ -12,6 +12,7 @@ import java.util.*;
 @Data
 @Entity
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,9 +28,10 @@ public class User {
     private String bio;
     @Column(length = 3000)
     private String password;
+
     @ElementCollection(targetClass = ERole.class) //one to many, через создание новой таблицы
     @CollectionTable(name = "user_role",
-    joinColumns = @JoinColumn("user_id"))
+            joinColumns = @JoinColumn(name = "user_id"))
     private Set<ERole> roles = new HashSet<>();
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user", orphanRemoval = true)
     private List<Post> posts = new ArrayList<>();

@@ -10,8 +10,8 @@ import java.util.Optional;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-
-    List<Post> findAllByUserOrderByCreatedDateDesc(User user);//desc - самый последний вверху
+    //SELECT * FROM POST as p WHERE User='user' SORT DESC
+    List<Post> findAllByUserOrderByCreatedDateDesc(User user);//desc сверху вниз - самый последний вверху
 
     List<Post> findAllByOrderByCreatedDateDesc();
 
